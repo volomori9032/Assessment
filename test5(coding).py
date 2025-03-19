@@ -1,16 +1,14 @@
 # importing easygui module
 from easygui import *
-
+import sys
 
 def warning():
     msgbox("Before you continue,\n A pre-warning that clicking the X will do nothing in most situations.\n If you wish to exit the program preferably wait until you have the option to exit.", title = "Warning.")
 
-def exit():
+def exit_program():
     quit = buttonbox(msg = "Do you wish to quit?", title = "Quit?", choices = ["Continue", "Quit"])
-    if quit == "continue":
-        pass
-    else:
-        quit
+    if quit == "Quit":
+        sys.exit()
 
 def userselector():
 
@@ -18,25 +16,21 @@ def userselector():
     username = enterbox(msg = "Please enter your choice of identifcation:\n If you wish to not proceed, do not enter a user.", title = "Username selector.")
     if username:
         if ccbox(msg = f"Please confirm you wish, {username}, as your user."): 
-            pass
             msgbox(msg = f"Your user is {username}.", title = "Selected user.")
         else:
             userselector()
-            
-        
-
     else:
-        quit = buttonbox(msg = "No username entered\n You must select a user if you wish to continue.\n Do you wish to choose a user or quit?", title = "Quit?", choices = ["Choose user", "Quit"])
+        quit_choice = buttonbox(msg = "No username entered\n You must select a user if you wish to continue.\n Do you wish to choose a user or quit?", title = "Quit?", choices = ["Choose user", "Quit"])
         if quit == "Choose user":
             userselector()
         
         else:
-            quit
+            sys.exit()
     
 
 def main():
 
-    mainpage = buttonbox(msg = f"Welcome {username} to Societas Spiritus's guide.\n (If you couldn't tell, Societas Spiritus is the name of the book and also a group within.)", Title = "Welcome!", choices = ["Overview", "Foedus Aquilarum", "Societas Spiritus", "Circulus Aeternitatis", "Maybe Character creation"])
+    mainpage = buttonbox(msg = f"Welcome {username} to Societas Spiritus's guide.\n (If you couldn't tell, Societas Spiritus is the name of the book and also a group within.)", title = "Welcome!", choices = ["Overview", "Foedus Aquilarum", "Societas Spiritus", "Circulus Aeternitatis", "Maybe Character creation", "Exit"])
 
     if mainpage == "Overview":
         msgbox(msg = """
@@ -46,6 +40,10 @@ def main():
                And a sub-group within Foedus Aquilarum called, Circulus Aeternitatis, who attempt to capture the experiements should they be located.
                """, title = "Societas Spiritus.", ok_button = "Continue.")
 
-main() # fix this
+    elif mainpage == "Exit":
+        sys.exit()
+
+
 warning()
 userselector()
+main()
