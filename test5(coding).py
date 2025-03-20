@@ -18,16 +18,14 @@ def exit_program():
 def userselector():
 
     global username
-    username = enterbox(msg = "Please enter your choice of identifcation:\n If you wish to not proceed, do not enter a user.", title = "Username selector.")
+    username = enterbox(msg = "Please enter your choice of identifcation:", title = "Username selector.")
     if username:
         if ccbox(msg = f"Please confirm you wish, {username}, as your user."): 
             msgbox(msg = f"Your user is {username}.", title = "Selected user.")
 
-        elif ccbox == "cancel":
+        else:
             userselector()
 
-        else:
-            sys.exit()
 
     else:
         quit_choice = buttonbox(msg = "No username entered\n You must select a user if you wish to continue.\n Do you wish to choose a user or quit?", title = "Quit?", choices = ["Choose user", "Quit"])
