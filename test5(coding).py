@@ -43,7 +43,6 @@ def user_selector():
         else:
             user_selector()
 
-
     else:
         quit_choice = buttonbox(msg = """
 No username entered\n
@@ -63,18 +62,22 @@ def main():
 Welcome {user_name} to Societas Spiritus's guide.
 Societas Spiritus is the name of the book and a group within.\n
 Please select what you would like to learn about.
-""", choices = ["Overview", "F.A", "S.S", "C.A", "Exit"], title = MP)
+""", choices = ["Overview", "F.A", "S.S", "C.A", "H", "Exit"], title = MP)
 
     if main_page == "Overview":
-        overview()
+        over_view()
 
     elif main_page == "F.A":
         foedus_aquilarum()
 
+    elif main_page == "H":
+        hint()
+
     elif main_page == "Exit":
         sys.exit()
 
-def overview():
+
+def over_view():
 
     msgbox(msg = """
 Societas Spiritus focuses mainly on the group, Societas Spiritus.\n
@@ -96,18 +99,91 @@ F.A attempts to destroy S.S's sites and facilities.
     msgbox(msg = """
 One of the defected personnel corrupted and left F.A, 
 starting an underground organisation called, Circulus Aeternitatis.\n
-C.A serves to bring cults, mafias, gangs and a multitude of other hostile organisations
-together to locate and capture escaped or injuried S.S experiments.\n
-
+C.A serves to bring a multitude of hostile organizations
+together to locate and capture escaped or injured S.S experiments.\n
+To either recruit or throw into very top secret biddings.\n
+C.A has been in business in for 30 years. 
 """, ok_button = "Continue", title = O)
     
+    main()
+ 
 
 def foedus_aquilarum():
     
-    msgbo(msg = """
-F.A
-""")
+    fa_password = passwordbox(msg = "Please enter personnel password: ")
+    if fa_password == "League of Eagles":
+        fa_main_page()
+
+    else:
+        msgbox(msg = "Oops! That is incorrect!")
+        main()
+
+
+def fa_main_page():
+
+    fa = buttonbox(msg = """
+Welcome Foedus Aquilarum  personnel,\n
+What would you like to learn about today?
+""", choices = ["History", "Management", "Return"])
+        
+    if fa == "History":
+
+        msgbox(msg = "history")
+        fa_main_page()
+            
+    elif fa == "Management":
+
+        msgbox(msg = "Management")
+        fa_main_page() 
+
+    elif fa == "Return":
+        main()
+
+    else:
+        sys.exit
+
+
+def societas_spiritus():
     
+    ss_password = passwordbox(msg = "Please enter personnel password: ")
+    if ss_password == "Societas Spiritus":
+        ss_main_page()
+
+    else:
+        msgbox(msg = "Oops! That is incorrect!")
+        main()
+
+def ss_main_page():
+
+    ss = buttonbox(msg = """
+Welcome Foedus Aquilarum  personnel,\n
+What would you like to learn about today?
+""", choices = ["History", "Management", "Return"])
+        
+    if ss == "History":
+
+        msgbox(msg = "history")
+        ss_main_page()
+            
+    elif ss == "Management":
+
+        msgbox(msg = "Management")
+        ss_main_page() 
+
+    elif ss == "Return":
+        main()
+
+    else:
+        sys.exit
+
+
+def hint():
+    
+    msgbox(msg = """
+S.S always loved to use their name as a password.
+F.A always loved to use their English name as a password.
+C.A always loved to use how long they have been active for as a password.
+    """)
 
 
 warning()
