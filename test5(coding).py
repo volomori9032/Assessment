@@ -68,6 +68,9 @@ Please select what you would like to learn about.
     if main_page == "Overview":
         overview()
 
+    elif main_page == "F.A":
+        foedus_aquilarum()
+
     elif main_page == "Exit":
         sys.exit()
 
@@ -93,9 +96,19 @@ F.A attempts to destroy S.S's sites and facilities.
     msgbox(msg = """
 One of the defected personnel corrupted and left F.A, 
 starting an underground organisation called, Circulus Aeternitatis.\n
-C.A serves to bring cults, mafias, gangs and a multitude of 
+C.A serves to bring cults, mafias, gangs and a multitude of other hostile organisations
+together to locate and capture escaped or injuried S.S experiments.\n
+
 """, ok_button = "Continue", title = O)
     
+
+def foedus_aquilarum():
+    
+    msgbo(msg = """
+F.A
+""")
+    
+
 
 warning()
 user_selector()
