@@ -87,7 +87,7 @@ starting a detectives firm called, Foedus Aquilarum.\n
 F.A has been running for about 100~ years.\n
 F.A has had many encounters with S.S,
 many leading in deaths on both sides.\n
-Foedus Aquilarum attempts to destroy S.S's sites and facilities. 
+F.A attempts to destroy S.S's sites and facilities. 
 """, ok_button = "Continue", title = O)
 
     msgbox(msg = """
