@@ -2,7 +2,7 @@
 
 # importing easygui module
 
-from easygui import *
+from easygui import *  
 
 import sys
 
@@ -59,7 +59,7 @@ Do you wish to choose a user or quit?
 
 
 def main():
-    """Main page."""
+    """Learn or quit."""
     main_page = buttonbox(msg=f"""
 Welcome {user_name} to Societas Spiritus's guide.
 Societas Spiritus is the name of the book and a group within.\n
@@ -80,7 +80,7 @@ Please select what you would like to learn about.
 
 
 def over_view():
-    """Explains the baics of the book."""
+    """Explains the basics of the book."""
     msgbox(msg="""
 Societas Spiritus focuses mainly on the group, Societas Spiritus.\n
 S.S's main goal is to create human animal mutations.\n
@@ -122,7 +122,7 @@ def foedus_aquilarum():
 
 
 def fa_main_page():
-    """Main page has options to learn."""
+    """Learn or quit."""
     fa = buttonbox(msg="""
 Welcome Foedus Aquilarum  personnel,\n
 What would you like to learn about today?
@@ -157,7 +157,7 @@ def societas_spiritus():
 
 
 def ss_main_page():
-    """Main page has options to learn."""
+    """Learn or quit."""
     ss = buttonbox(msg="""
 Welcome Foedus Aquilarum  personnel,\n
 What would you like to learn about today?
@@ -192,4 +192,3 @@ C.A always loved to use how long they have been active for as a password.
 warning()
 user_selector()
 main()
- 
