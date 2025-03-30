@@ -2,7 +2,7 @@
 
 # importing easygui module
 
-from easygui import *  
+from easygui import *
 
 import sys
 
@@ -71,6 +71,9 @@ Please select what you would like to learn about.
 
     elif main_page == "F.A":
         foedus_aquilarum()
+
+    elif main_page == "S.S":
+        societas_spiritus()
 
     elif main_page == "H":
         hint()
@@ -186,7 +189,18 @@ def hint():
 S.S always loved to use their name as a password.
 F.A always loved to use their English name as a password.
 C.A always loved to use how long they have been active for as a password.
-    """)
+""")
+    
+    buttonbox(msg=".", choices=["Return", "Character?"], title="?")
+
+    if buttonbox == "Return":
+        main()
+
+    elif buttonbox == "Character?":
+        passwordbox(msg="Enter all passwords: ")
+
+        if passwordbox == "Societas Spiritus League of Eagles 30":
+            msgbox(msg="Notice to make the character creation if possible")
 
 
 warning()
