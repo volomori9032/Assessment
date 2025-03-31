@@ -30,6 +30,7 @@ Makes it easier for both of us.
 def exit_program():
     """Asks user if they wish to quit or continue."""
     quit = buttonbox(msg="Quit?", choices=["Continue", "Quit"], title=Q)
+
     if quit == "Quit":
         sys.exit()
 
@@ -38,6 +39,7 @@ def user_selector():
     """Gathers username or quits."""
     global user_name
     user_name = enterbox(msg="Please enter identification: ", title=US)
+    
     if user_name:
         if ccbox(msg=f"Please confirm, {user_name}, is your user.", title=C):
             msgbox(msg=f"Your user is {user_name}.", title=C)
@@ -51,6 +53,7 @@ No username entered\n
 You must select a user if you wish to continue.\n
 Do you wish to choose a user or quit?
 """, choices=["Choose user", "Quit"], title=Q)
+        
         if quit_choice == "Choose user":
             user_selector()
 
@@ -75,10 +78,16 @@ Please select what you would like to learn about.
     elif main_page == "S.S":
         societas_spiritus()
 
+    elif main_page == "C.A":
+        circulus_aeternitatis()
+
     elif main_page == "H":
         hint()
 
     elif main_page == "Exit":
+        sys.exit()
+
+    else:
         sys.exit()
 
 
@@ -116,6 +125,7 @@ C.A has been in business in for 30 years.
 def foedus_aquilarum():
     """Gathers password before proceeding to page or back to main."""
     fa_password = passwordbox(msg="Please enter personnel password: ")
+
     if fa_password == "League of Eagles":
         fa_main_page()
 
@@ -129,11 +139,11 @@ def fa_main_page():
     fa = buttonbox(msg="""
 Welcome Foedus Aquilarum  personnel,\n
 What would you like to learn about today?
-""", choices=["History", "Management", "Return"])
+""", choices=["placeholder", "Management", "Return"])
 
-    if fa == "History":
+    if fa == "placeholder":
 
-        msgbox(msg="history")
+        msgbox(msg="placeholder")
         fa_main_page()
 
     elif fa == "Management":
@@ -151,6 +161,7 @@ What would you like to learn about today?
 def societas_spiritus():
     """Gathers password before proceeding to page or back to main."""
     ss_password = passwordbox(msg="Please enter personnel password: ")
+
     if ss_password == "Societas Spiritus":
         ss_main_page()
 
@@ -162,13 +173,13 @@ def societas_spiritus():
 def ss_main_page():
     """Learn or quit."""
     ss = buttonbox(msg="""
-Welcome Foedus Aquilarum  personnel,\n
+Welcome Societas Spiritus  personnel,\n
 What would you like to learn about today?
-""", choices=["History", "Management", "Return"])
+""", choices=["Mutations", "Management", "Return"])
 
-    if ss == "History":
+    if ss == "Mutations":
 
-        msgbox(msg="history")
+        msgbox(msg="placeholder")
         ss_main_page()
 
     elif ss == "Management":
@@ -183,6 +194,41 @@ What would you like to learn about today?
         sys.exit
 
 
+def circulus_aeternitatis():
+    """Gathers password before proceeding to page or back to main."""
+    ca_password = passwordbox(msg="Please enter personnel password: ")
+    if ca_password == "30":
+        ca_main_page()
+
+    else:
+        msgbox(msg="Oops! That is incorrect!")
+        main()
+
+
+def ca_main_page():
+    """Learn or quit."""
+    ca = buttonbox(msg="""
+Welcome Circulus Aeternitatis  personnel,\n
+What would you like to learn about today?
+""", choices=["placeholder", "Management", "Return"])
+    
+    if ca == "placeholder":
+
+        msgbox(msg="placeholder")
+        ca_main_page()
+
+    elif ca == "Management":
+
+        msgbox(msg="Management")
+        ca_main_page()
+
+    elif ca == "Return":
+        main()
+
+    else:
+        sys.exit
+
+
 def hint():
     """Hints to each password."""
     msgbox(msg="""
@@ -191,16 +237,28 @@ F.A always loved to use their English name as a password.
 C.A always loved to use how long they have been active for as a password.
 """)
     
-    buttonbox(msg=".", choices=["Return", "Character?"], title="?")
+    choice = buttonbox(msg=".", choices=["Return", "Character"], title="?")
 
-    if buttonbox == "Return":
+    if choice == "Return":
         main()
 
-    elif buttonbox == "Character?":
-        passwordbox(msg="Enter all passwords: ")
+    elif choice == "Character":
+        character_creation()
+    
+    else:
+        sys.exit
 
-        if passwordbox == "Societas Spiritus League of Eagles 30":
-            msgbox(msg="Notice to make the character creation if possible")
+
+def character_creation():
+    """Gathers password before proceeding to page or back to main."""
+    c_c = passwordbox(msg="Enter all passwords: ")
+
+    if c_c == "Societas Spiritus League of Eagles 30":
+        msgbox(msg="Notice to make the character creation if possible")
+
+    else:
+        msgbox(msg="Yikes! Tried and you failed, maybe learn some more?")
+        main()
 
 
 warning()
