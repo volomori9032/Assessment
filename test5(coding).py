@@ -1,6 +1,6 @@
 """This file explains book groups and creatures."""
 
-# importing easygui module
+# Importing easygui module
 
 from easygui import *
 
@@ -9,12 +9,17 @@ import sys
 
 # Variables of titles
 
-MP = "Societas Spiritus"  # Title for main page
+MP = "Main page"  # Title for main page
 W = "Warning!"  # Title for warning
-Q = "Quit?"  # Title for exit_program and quit
+Q = "Quit?"  # Title for quit
 US = "Select Identification"  # Title for user_selector
 C = "Confirmation"  # Title for confirmation of user
 OV = "Overview"  # Title for overview
+CC = "Character Creation"  # Title for character creation
+PS = "Password?"  # Title for passwords
+S = "Societas Spiritus"  # Title for S.S
+F = "Foedus Aquilarum"  # Title for F.A
+CA = "Circulus Aeternitatis"  # Title for C.A
 
 
 def warning():
@@ -27,19 +32,11 @@ Makes it easier for both of us.
 """, title=W)
 
 
-def exit_program():
-    """Asks user if they wish to quit or continue."""
-    quit = buttonbox(msg="Quit?", choices=["Continue", "Quit"], title=Q)
-
-    if quit == "Quit":
-        sys.exit()
-
-
 def user_selector():
     """Gathers username or quits."""
     global user_name
     user_name = enterbox(msg="Please enter identification: ", title=US)
-    
+
     if user_name:
         if ccbox(msg=f"Please confirm, {user_name}, is your user.", title=C):
             msgbox(msg=f"Your user is {user_name}.", title=C)
@@ -53,7 +50,7 @@ No username entered\n
 You must select a user if you wish to continue.\n
 Do you wish to choose a user or quit?
 """, choices=["Choose user", "Quit"], title=Q)
-        
+
         if quit_choice == "Choose user":
             user_selector()
 
@@ -133,7 +130,7 @@ def foedus_aquilarum():
         msgbox(msg="Oops! That is incorrect!")
         main()
 
-
+# finish below
 def fa_main_page():
     """Learn or quit."""
     fa = buttonbox(msg="""
@@ -169,7 +166,7 @@ def societas_spiritus():
         msgbox(msg="Oops! That is incorrect!")
         main()
 
-
+# finish below
 def ss_main_page():
     """Learn or quit."""
     ss = buttonbox(msg="""
@@ -204,14 +201,14 @@ def circulus_aeternitatis():
         msgbox(msg="Oops! That is incorrect!")
         main()
 
-
+# finish below
 def ca_main_page():
     """Learn or quit."""
     ca = buttonbox(msg="""
-Welcome Circulus Aeternitatis  personnel,\n
+Welcome Circulus Aeternitatis personnel,\n
 What would you like to learn about today?
 """, choices=["placeholder", "Management", "Return"])
-    
+
     if ca == "placeholder":
 
         msgbox(msg="placeholder")
@@ -236,7 +233,7 @@ S.S always loved to use their name as a password.
 F.A always loved to use their English name as a password.
 C.A always loved to use how long they have been active for as a password.
 """)
-    
+
     choice = buttonbox(msg=".", choices=["Return", "Character"], title="?")
 
     if choice == "Return":
@@ -244,11 +241,11 @@ C.A always loved to use how long they have been active for as a password.
 
     elif choice == "Character":
         character_creation()
-    
+
     else:
         sys.exit
 
-
+# finish below
 def character_creation():
     """Gathers password before proceeding to page or back to main."""
     c_c = passwordbox(msg="Enter all passwords: ")
