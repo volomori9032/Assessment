@@ -125,9 +125,6 @@ def foedus_aquilarum():
     if fa_password == "League of Eagles":
         fa_main_page()
 
-    elif fa_password is None:
-        sys.exit()
-
     else:
         msgbox(msg="Oops! That is incorrect!")
         main()
@@ -162,9 +159,6 @@ def societas_spiritus():
     if ss_password == "Societas Spiritus":
         ss_main_page()
 
-    elif ss_password is None:
-        sys.exit()
-
     else:
         msgbox(msg="Oops! That is incorrect!")
         main()
@@ -197,9 +191,6 @@ def circulus_aeternitatis():
     ca_password = passwordbox(msg="Please enter personnel password: ")
     if ca_password == "30":
         ca_main_page()
-
-    elif ca_password is None:
-        sys.exit()
 
     else:
         msgbox(msg="Oops! That is incorrect!")
@@ -256,9 +247,6 @@ def character_creation():
 
     if c_c == "Societas Spiritus League of Eagles 30":
         cc_main_page()
-    
-    elif c_c is None:
-        sys.exit()
 
     else:
         msgbox(msg="Yikes! Tried and you failed, maybe learn some more?")
@@ -267,13 +255,36 @@ def character_creation():
 # finish below
 def cc_main_page():
     """Create or return."""
-    msgbox(msg=""""
+    races = ["Human", "Fish", "Bird", "Cat", "Dog", "Wolf"]
+    sex = ["Female", "Male"]
+    age = ["Minor", "13", "14", "15", "16", "17", "18", "19", "20", "20+"]
+    skin_colour = ["Black", "Brown", "White"]
+    f_hair = ["Short", "Medium", "Long"]
+    m_hair = ["Bald", "Buzz cut", "Ear length", "Neck length"]
+    eye_colour = ["Blue", "Green", "Brown", "Gray", "Gold", "Red", "Purple"]
+    height = ["4'0 and below", "5'0 - 5'11", "6'0 - 6'11", "7'0 and above"]
+    accessories = ["You get none."]
+
+    msgbox(msg="""
 Welcome to character creator.\n
 Here using the mutations mentioned in S.S's lore,
 you get to make your own!\n
 Well own referring to how it looks.\n
 Not a new mutation!
 """, ok_button="Continue")
+    
+    race = choicebox(msg="Select preferred race.", choices=races)
+
+    if race == "Human" or "Fish" or "Bird" or "Cat" or "Dog" or "Wolf":
+        choicebox(msg="Pick a gender: ", choices=sex)
+        if choicebox == "Female" or "Male":
+            choicebox(msg="Pick a age: ", choices=age)
+
+        else:
+            main()
+
+    else:
+        main()
 
 
 user_selector()
