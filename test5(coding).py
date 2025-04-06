@@ -205,12 +205,10 @@ What would you like to learn about today?
 """, choices=["placeholder", "Management", "Return"])
 
     if ca == "placeholder":
-
         msgbox(msg="placeholder")
         ca_main_page()
 
     elif ca == "Management":
-
         msgbox(msg="Management")
         ca_main_page()
 
@@ -260,10 +258,11 @@ def cc_main_page():
     age = ["Minor", "13", "14", "15", "16", "17", "18", "19", "20", "20+"]
     skin_colour = ["Black", "Brown", "White"]
     f_hair = ["Short", "Medium", "Long"]
-    m_hair = ["Bald", "Buzz cut", "Ear length", "Neck length"]
+    m_hair = ["Bald", "Buzz", "Ear length", "Neck length"]
+    hair_colour = ["Blonde", "Black", "Brown"]
     eye_colour = ["Blue", "Green", "Brown", "Gray", "Gold", "Red", "Purple"]
     height = ["4'0 and below", "5'0 - 5'11", "6'0 - 6'11", "7'0 and above"]
-    accessories = ["You get none."]
+    accessories = ["You get none. :3"]
 
     msgbox(msg="""
 Welcome to character creator.\n
@@ -277,8 +276,47 @@ Not a new mutation!
 
     if race == "Human" or "Fish" or "Bird" or "Cat" or "Dog" or "Wolf":
         choicebox(msg="Pick a gender: ", choices=sex)
-        if choicebox == "Female" or "Male":
-            choicebox(msg="Pick a age: ", choices=age)
+
+        if choicebox == "Female":
+            choicebox(msg="Pick a hair length: ", choices=f_hair)
+
+            if choicebox == "Short" or "Medium" or "Long":
+                choicebox(msg="Pick hair colour: ", choices=hair_colour)
+
+                if choicebox == "Brown" or "Black" or "Blonde":
+                    choicebox(msg="Pick a age: ", choices=age)
+            
+                    if choicebox == "13" or "14" or "15" or "16" or "17" or "18":
+                        msgbox(msg="Teenager, interesting.")
+                        choicebox(msg="Pick a skin colour: ", choices=skin_colour)
+
+                        if choicebox == "Black" or "Brown" or "White":
+                            choicebox(msg="Pick a eye colour: ", choices=eye_colour)
+
+                            if choicebox ==  # eye colour here
+
+                    elif choicebox == "19" or "20" or "21+":
+                        msgbox(msg="Adult, nice choice.")
+                        choicebox()
+                
+                    elif choicebox == "Minor":
+                        msgbox(msg="My... my. No.")
+                        main()
+
+                    else:
+                        main()
+            
+            else:
+                main
+
+        elif choicebox == "Male":
+            choicebox(msg="Pick a hair length: ", choices=m_hair)
+
+            if choicebox == "Bald" or "Buzz" or "Ear length" or "Neck length":
+                choicebox()
+
+            else:
+                main()
 
         else:
             main()
@@ -286,6 +324,12 @@ Not a new mutation!
     else:
         main()
 
+# testing
+
+user_selector()
+cc_main_page()
+
+# testing end
 
 user_selector()
 main()
