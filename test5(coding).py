@@ -253,15 +253,8 @@ def character_creation():
 # finish below
 def cc_main_page():
     """Create or return."""
-    races = ["Human", "Fish", "Bird", "Cat", "Dog", "Wolf"]
-    sex = ["Female", "Male"]
-    age = ["Minor", "13", "14", "15", "16", "17", "18", "19", "20", "20+"]
     skin_colour = ["Black", "Brown", "White"]
-    f_hair = ["Short", "Medium", "Long"]
-    m_hair = ["Bald", "Buzz", "Ear length", "Neck length"]
-    hair_colour = ["Blonde", "Black", "Brown"]
     eye_colour = ["Blue", "Green", "Brown", "Gray", "Gold", "Red", "Purple"]
-    height = ["4'0 and below", "5'0 - 5'11", "6'0 - 6'11", "7'0 and above"]
     accessories = ["You get none. :3"]
 
     msgbox(msg="""
@@ -272,9 +265,7 @@ Well own referring to how it looks.\n
 Not a new mutation!
 """, ok_button="Continue")
     
-    race = choicebox(msg="Select preferred race.", choices=races)
-
-    if race == "Human" or "Fish" or "Bird" or "Cat" or "Dog" or "Wolf":
+"""
         choicebox(msg="Pick a gender: ", choices=sex)
 
         if choicebox == "Female":
@@ -284,27 +275,11 @@ Not a new mutation!
                 choicebox(msg="Pick hair colour: ", choices=hair_colour)
 
                 if choicebox == "Brown" or "Black" or "Blonde":
-                    choicebox(msg="Pick a age: ", choices=age)
             
-                    if choicebox == "13" or "14" or "15" or "16" or "17" or "18":
-                        msgbox(msg="Teenager, interesting.")
                         choicebox(msg="Pick a skin colour: ", choices=skin_colour)
 
                         if choicebox == "Black" or "Brown" or "White":
                             choicebox(msg="Pick a eye colour: ", choices=eye_colour)
-
-                            if choicebox ==  # eye colour here
-
-                    elif choicebox == "19" or "20" or "21+":
-                        msgbox(msg="Adult, nice choice.")
-                        choicebox()
-                
-                    elif choicebox == "Minor":
-                        msgbox(msg="My... my. No.")
-                        main()
-
-                    else:
-                        main()
             
             else:
                 main
@@ -323,11 +298,122 @@ Not a new mutation!
 
     else:
         main()
+"""
+
+def hair_stuff():
+    global f_hair
+    global m_hair
+    global hair_colour
+
+    f_hair = ["Short", "Medium", "Long"]
+    m_hair = ["Bald", "Buzz", "Ear length", "Neck length"]
+    hair_colour = ["Blonde", "Black", "Brown"]
+
+    if gender == "Female":
+        h_length == 
+
+def main_four():
+    global race
+    global gender
+    global age
+    global height
+
+    races = ["Human", "Fish", "Bird", "Cat", "Dog", "Wolf"]
+    sex = ["Female", "Male"]
+    ages = ["Minor", "13", "14", "15", "16", "17", "18", "19", "20", "20+"]
+    heights = ["4'11 and below", "5'0 - 5'11", "6'0 - 6'11", "7'0 and above"]
+
+    race = choicebox(msg="Pick a race: ", choices=races)
+
+    if race == "Human" or "Fish" or "Bird" or "Cat" or "Dog" or "Wolf":
+        age = choicebox(msg="Pick a age: ", choices=ages)
+
+        if age == "13" or "14" or "15" or "16" or "17" or "18":
+            msgbox(msg="Teenager, interesting.")
+            height = choicebox(msg="Pick a height: ", choices=heights)
+
+            if height == "4'11 and below":
+                msgbox(msg="Sorry bud, too similar to a child!")
+                main()
+
+            elif height == "5'0 - 5'11":
+                msgbox(msg="Average height!")
+                gender = choicebox(msg="Pick a gender: ", choices=sex)
+
+                if gender == "Female":
+                    hair_stuff()
+
+                elif gender == "Male":
+                    hair_stuff()
+
+                else:
+                    main()
+
+            elif height == "6'0 - 6'11" or "7'0 and above":
+                msgbox(msg="Interesting height you got there!")
+                gender = choicebox(msg="Pick a gender: ", choices=sex)
+
+                if gender == "Female":
+                    hair_stuff()
+
+                elif gender == "Male":
+                    hair_stuff()
+
+                else:
+                    main()
+
+            else:
+                main()
+
+        elif age == "19" or "20" or "21+":
+            msgbox(msg="Adult, nice choice.")
+            height = choicebox(msg="Pick a height: ", choices=heights)
+
+            if height == "4'11 and below":
+                msgbox(msg="Sorry bud, too similar to a child!")
+                main()
+
+            elif height == "5'0 - 5'11":
+                msgbox(msg="Average height!")
+                gender = choicebox(msg="Pick a gender: ", choices=sex)
+
+                if gender == "Female":
+                    hair_stuff()
+
+                elif gender == "Male":
+                    hair_stuff()
+
+                else:
+                    main()
+
+            elif height == "6'0 - 6'11" or "7'0 and above":
+                msgbox(msg="Interesting height you got there!")
+                gender = choicebox(msg="Pick a gender: ", choices=sex)
+
+                if gender == "Female":
+                    hair_stuff()
+
+                elif gender == "Male":
+                    hair_stuff()
+
+                else:
+                    main()
+
+        elif age == "Minor":
+            msgbox(msg="My... my. No.")
+            main()
+
+        else:
+            main()
+
+    else:
+        main()
+
+
 
 # testing
 
-user_selector()
-cc_main_page()
+main_four()
 
 # testing end
 
