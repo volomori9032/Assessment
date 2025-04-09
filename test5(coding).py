@@ -154,6 +154,7 @@ What would you like to learn about today?
 
 def societas_spiritus():
     """Gathers password before proceeding to page or back to main."""
+
     ss_password = passwordbox(msg="Please enter personnel password: ")
 
     if ss_password == "Societas Spiritus":
@@ -253,9 +254,6 @@ def character_creation():
 # finish below
 def cc_main_page():
     """Create or return."""
-    skin_colour = ["Black", "Brown", "White"]
-    eye_colour = ["Blue", "Green", "Brown", "Gray", "Gold", "Red", "Purple"]
-    accessories = ["You get none. :3"]
 
     msgbox(msg="""
 Welcome to character creator.\n
@@ -264,55 +262,11 @@ you get to make your own!\n
 Well own referring to how it looks.\n
 Not a new mutation!
 """, ok_button="Continue")
-    
-"""
-        choicebox(msg="Pick a gender: ", choices=sex)
 
-        if choicebox == "Female":
-            choicebox(msg="Pick a hair length: ", choices=f_hair)
-
-            if choicebox == "Short" or "Medium" or "Long":
-                choicebox(msg="Pick hair colour: ", choices=hair_colour)
-
-                if choicebox == "Brown" or "Black" or "Blonde":
-            
-                        choicebox(msg="Pick a skin colour: ", choices=skin_colour)
-
-                        if choicebox == "Black" or "Brown" or "White":
-                            choicebox(msg="Pick a eye colour: ", choices=eye_colour)
-            
-            else:
-                main
-
-        elif choicebox == "Male":
-            choicebox(msg="Pick a hair length: ", choices=m_hair)
-
-            if choicebox == "Bald" or "Buzz" or "Ear length" or "Neck length":
-                choicebox()
-
-            else:
-                main()
-
-        else:
-            main()
-
-    else:
-        main()
-"""
-
-def hair_stuff():
-    global f_hair
-    global m_hair
-    global hair_colour
-
-    f_hair = ["Short", "Medium", "Long"]
-    m_hair = ["Bald", "Buzz", "Ear length", "Neck length"]
-    hair_colour = ["Blonde", "Black", "Brown"]
-
-    if gender == "Female":
-        h_length == 
+    main_four()
 
 def main_four():
+    """Choice of race, gender, height, age."""
     global race
     global gender
     global age
@@ -320,7 +274,7 @@ def main_four():
 
     races = ["Human", "Fish", "Bird", "Cat", "Dog", "Wolf"]
     sex = ["Female", "Male"]
-    ages = ["Minor", "13", "14", "15", "16", "17", "18", "19", "20", "20+"]
+    ages = ["13", "14", "15", "16", "17", "18", "19", "20", "20+"]
     heights = ["4'11 and below", "5'0 - 5'11", "6'0 - 6'11", "7'0 and above"]
 
     race = choicebox(msg="Pick a race: ", choices=races)
@@ -346,9 +300,6 @@ def main_four():
                 elif gender == "Male":
                     hair_stuff()
 
-                else:
-                    main()
-
             elif height == "6'0 - 6'11" or "7'0 and above":
                 msgbox(msg="Interesting height you got there!")
                 gender = choicebox(msg="Pick a gender: ", choices=sex)
@@ -358,12 +309,6 @@ def main_four():
 
                 elif gender == "Male":
                     hair_stuff()
-
-                else:
-                    main()
-
-            else:
-                main()
 
         elif age == "19" or "20" or "21+":
             msgbox(msg="Adult, nice choice.")
@@ -383,9 +328,6 @@ def main_four():
                 elif gender == "Male":
                     hair_stuff()
 
-                else:
-                    main()
-
             elif height == "6'0 - 6'11" or "7'0 and above":
                 msgbox(msg="Interesting height you got there!")
                 gender = choicebox(msg="Pick a gender: ", choices=sex)
@@ -396,20 +338,70 @@ def main_four():
                 elif gender == "Male":
                     hair_stuff()
 
-                else:
+
+
+def hair_stuff():
+    """Choice of hair."""
+    global f_length
+    global m_length
+    global hair_colour
+
+    f_hair = ["Short", "Medium", "Long"]
+    m_hair = ["Bald", "Buzz", "Ear length", "Neck length"]
+    h_colour = ["Blonde", "Black", "Brown"]
+
+    if gender == "Female":
+        f_length = choicebox(msg="Pick a hair length: ", choices=f_hair)
+
+        if f_length == "Short" or "Medium" or "Long":
+            hair_colour = choicebox(msg="Pick a colour: ", choices=h_colour)
+
+            if hair_colour == "Blonde" or "Black" or "Brown":
+                others()
+
+    elif gender == "Male":
+        m_length = choicebox(msg="Pick a hair length: ", choices=m_hair)
+
+        if m_length == "Bald" or "Buzz" or "Ear length" or "Neck length":
+            hair_colour = choicebox(msg="Pick a colour: ", choices=h_colour)
+
+            if hair_colour == "Blonde" or "Black" or "Brown":
+                others()
+
+
+
+def others():
+    """Choice of other."""
+    global skin_colour
+    global eye_colour
+    global accessories
+
+    s_colour = ["Black", "Brown", "White"]
+    e_colour = ["Blue", "Green", "Brown", "Gray", "Gold", "Red", "Purple"]
+    accessory = ["You get none."]
+
+    if hair_colour == "Blonde" or "Black" or "Brown":
+        skin_colour = choicebox(msg="Pick a skin: ", choices=s_colour)
+
+        if skin_colour == "Black" or "Brown" or "White":
+            eye_colour = choicebox(msg="Pick a eye: ", choices=e_colour)
+
+            if eye_colour == "Blue" or "Green" or "Brown" or "Gray":
+                accessories = choicebox(msg="Choose: ", choices=accessory)
+
+                if accessories == "You get none.":
                     main()
 
-        elif age == "Minor":
-            msgbox(msg="My... my. No.")
-            main()
+            elif eye_colour == "Gold" or "Red" or "Purple":
+                accessories = choicebox(msg="Choose: ", choices=accessory)
 
-        else:
-            main()
-
-    else:
-        main()
+                if accessories == "You get none.":
+                    aftermath()
 
 
+def aftermath():
+    """Finial."""
+    msgbox
 
 # testing
 
