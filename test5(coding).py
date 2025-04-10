@@ -7,28 +7,13 @@ from easygui import *
 import sys
 
 
-# Variables of titles
-
-MP = "Main page"  # Title for main page
-Q = "Quit?"  # Title for quit
-IN = "Incorrect!"  # Title for incorrect passwords
-US = "Select Identification"  # Title for user_selector
-C = "Confirmation"  # Title for confirmation of user
-OV = "Overview"  # Title for overview
-CC = "Character Creation"  # Title for character creation
-PS = "Password?"  # Title for passwords
-S = "Societas Spiritus"  # Title for S.S
-F = "Foedus Aquilarum"  # Title for F.A
-CA = "Circulus Aeternitatis"  # Title for C.A
-
-
 def main():
     """Learn or quit."""
     main_page = buttonbox(msg=f"""
 Welcome {user_name} to Societas Spiritus's guide.
 Societas Spiritus is the name of the book and a group within.\n
 Please select what you would like to learn about.
-""", choices=["Overview", "F.A", "S.S", "C.A", "H", "Exit"], title=MP)
+""", choices=["Overview", "F.A", "S.S", "C.A", "H", "Exit"])
 
     if main_page == "Overview":
         over_view()
@@ -55,11 +40,11 @@ Please select what you would like to learn about.
 def user_selector():
     """Gathers username or quits."""
     global user_name
-    user_name = enterbox(msg="Please enter identification: ", title=US)
+    user_name = enterbox(msg="Please enter identification: ")
 
     if user_name:
-        if ccbox(msg=f"Please confirm, {user_name}, is your user.", title=C):
-            msgbox(msg=f"Your user is {user_name}.", title=C)
+        if ccbox(msg=f"Please confirm, {user_name}, is your user."):
+            msgbox(msg=f"Your user is {user_name}.")
 
         else:
             user_selector()
@@ -69,7 +54,7 @@ def user_selector():
 No username entered\n
 You must select a user if you wish to continue.\n
 Do you wish to choose a user or quit?
-""", choices=["Choose user", "Quit"], title=Q)
+""", choices=["Choose user", "Quit"])
 
         if quit_choice == "Choose user":
             user_selector()
@@ -86,8 +71,8 @@ S.S's main goal is to create human animal mutations.\n
 S.S has been in running for about 200~+ years, close to 400~ years.\n
 S.S ignores ethical and safety concerns,
 leading to many deaths of staff due to trying to stop their crimes.\n
-""", ok_button="Continue", title=OV)
-    
+""", ok_button="Continue")
+
     if p1 is None:
         sys.exit()
 
@@ -98,8 +83,8 @@ F.A has been running for about 100~ years.\n
 F.A has had many encounters with S.S,
 many leading in deaths on both sides.\n
 F.A attempts to destroy S.S's sites and facilities.
-""", ok_button="Continue", title=OV)
-    
+""", ok_button="Continue")
+
     if p2 is None:
         sys.exit()
 
@@ -110,8 +95,8 @@ C.A serves to bring a multitude of hostile organizations
 together to locate and capture escaped or injured S.S experiments.\n
 To either recruit or throw into very top secret biddings.\n
 C.A has been in business in for 30 years.
-""", ok_button="Continue", title=OV)
-    
+""", ok_button="Continue")
+
     if p3 is None:
         sys.exit()
 
@@ -154,7 +139,6 @@ What would you like to learn about today?
 
 def societas_spiritus():
     """Gathers password before proceeding to page or back to main."""
-
     ss_password = passwordbox(msg="Please enter personnel password: ")
 
     if ss_password == "Societas Spiritus":
@@ -251,19 +235,21 @@ def character_creation():
         msgbox(msg="Yikes! Tried and you failed, maybe learn some more?")
         main()
 
-# finish below
+
 def cc_main_page():
     """Create or return."""
-
     msgbox(msg="""
 Welcome to character creator.\n
 Here using the mutations mentioned in S.S's lore,
 you get to make your own!\n
 Well own referring to how it looks.\n
-Not a new mutation!
+Not a new mutation!\n
+Be warned!
+Once you enter you can't back out!
 """, ok_button="Continue")
 
     main_four()
+
 
 def main_four():
     """Choice of race, gender, height, age."""
@@ -283,7 +269,6 @@ def main_four():
         age = choicebox(msg="Pick a age: ", choices=ages)
 
         if age == "13" or "14" or "15" or "16" or "17" or "18":
-            msgbox(msg="Teenager, interesting.")
             height = choicebox(msg="Pick a height: ", choices=heights)
 
             if height == "4'11 and below":
@@ -304,14 +289,10 @@ def main_four():
                 msgbox(msg="Interesting height you got there!")
                 gender = choicebox(msg="Pick a gender: ", choices=sex)
 
-                if gender == "Female":
-                    hair_stuff()
-
-                elif gender == "Male":
+                if gender == "Female" or "Male":
                     hair_stuff()
 
         elif age == "19" or "20" or "21+":
-            msgbox(msg="Adult, nice choice.")
             height = choicebox(msg="Pick a height: ", choices=heights)
 
             if height == "4'11 and below":
@@ -322,22 +303,15 @@ def main_four():
                 msgbox(msg="Average height!")
                 gender = choicebox(msg="Pick a gender: ", choices=sex)
 
-                if gender == "Female":
-                    hair_stuff()
-
-                elif gender == "Male":
+                if gender == "Female" or "Male":
                     hair_stuff()
 
             elif height == "6'0 - 6'11" or "7'0 and above":
                 msgbox(msg="Interesting height you got there!")
                 gender = choicebox(msg="Pick a gender: ", choices=sex)
 
-                if gender == "Female":
+                if gender == "Female" or "Male":
                     hair_stuff()
-
-                elif gender == "Male":
-                    hair_stuff()
-
 
 
 def hair_stuff():
@@ -369,16 +343,13 @@ def hair_stuff():
                 others()
 
 
-
 def others():
     """Choice of other."""
     global skin_colour
     global eye_colour
-    global accessories
 
     s_colour = ["Black", "Brown", "White"]
     e_colour = ["Blue", "Green", "Brown", "Gray", "Gold", "Red", "Purple"]
-    accessory = ["You get none."]
 
     if hair_colour == "Blonde" or "Black" or "Brown":
         skin_colour = choicebox(msg="Pick a skin: ", choices=s_colour)
@@ -387,27 +358,52 @@ def others():
             eye_colour = choicebox(msg="Pick a eye: ", choices=e_colour)
 
             if eye_colour == "Blue" or "Green" or "Brown" or "Gray":
-                accessories = choicebox(msg="Choose: ", choices=accessory)
-
-                if accessories == "You get none.":
-                    main()
+                aftermath()
 
             elif eye_colour == "Gold" or "Red" or "Purple":
-                accessories = choicebox(msg="Choose: ", choices=accessory)
-
-                if accessories == "You get none.":
-                    aftermath()
+                aftermath()
 
 
 def aftermath():
     """Finial."""
-    msgbox
+    score = 0
+    years = ["25", "30", "35", "100", "150", "200", "250", "300", "350", "400"]
+    msgbox(msg="Congratulations! You did it.")
+    msgbox("""
+Your final outcome is-\n
+OH WAIT LOOK A POP QUIZ!
+""")
+    if score == 0:
+        q = multchoicebox(msg="""
+What is the current run times for each group?
+""", choices=years)
 
-# testing
+        if q == "30" and "100" and "400":
+            score = score + 5
 
-main_four()
+        elif q is None:
+            sys.exit()
 
-# testing end
+        else:
+            score = 0
+
+    msgbox(msg="Well done! (totally wasn't added because required)")
+    if gender == "Male":
+        msgbox(f"""
+Anyways. You have picked:
+A {gender} {race} with {skin_colour} skin and {eye_colour} eyes.
+{age} years old, standing at {height} tall.
+{hair_colour} {m_length}.
+""")
+    elif gender == "Female":
+        msgbox(f"""
+Anyways. You have picked:
+A {gender} {race} with {skin_colour} skin and {eye_colour} eyes.
+{age} years old, standing at {height} tall.
+{hair_colour} {f_length} hair.
+""")
+        main()
+
 
 user_selector()
 main()
