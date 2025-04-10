@@ -134,7 +134,7 @@ What would you like to learn about today?
         main()
 
     else:
-        sys.exit
+        sys.exit()
 
 
 def societas_spiritus():
@@ -168,7 +168,7 @@ What would you like to learn about today?
         main()
 
     else:
-        sys.exit
+        sys.exit()
 
 
 def circulus_aeternitatis():
@@ -201,7 +201,7 @@ What would you like to learn about today?
         main()
 
     else:
-        sys.exit
+        sys.exit()
 
 
 def hint():
@@ -221,7 +221,7 @@ C.A always loved to use how long they have been active for as a password.
         character_creation()
 
     else:
-        sys.exit
+        sys.exit()
 
 
 def character_creation():
