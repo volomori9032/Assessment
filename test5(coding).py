@@ -114,20 +114,28 @@ def foedus_aquilarum():
         msgbox(msg="Oops! That is incorrect!")
         main()
 
-# finish below
+
 def fa_main_page():
     """Learn or quit."""
     fa = buttonbox(msg="""
 Welcome Foedus Aquilarum  personnel,\n
 What would you like to learn about today?
-""", choices=["placeholder", "Management", "Return"])
+""", choices=[ "Management", "Return"])
 
-    if fa == "placeholder":
-        msgbox(msg="placeholder")
-        fa_main_page()
+    if fa == "Management":
+        msgbox(msg="""
+Management!\n
 
-    elif fa == "Management":
-        msgbox(msg="Management")
+Owner - “Nivea” (Snowy)\n
+
+Director - “HELIANTHUS” (Sunflower)\n
+
+High Ranks\n
+
+Principal Director - “Aenean” (Jasmine)\n
+
+Specialised Investigator - “Saxum” (Rock)\n
+""")
         fa_main_page()
 
     elif fa == "Return":
