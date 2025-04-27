@@ -120,7 +120,7 @@ def fa_main_page():
     fa = buttonbox(msg="""
 Welcome Foedus Aquilarum  personnel,\n
 What would you like to learn about today?
-""", choices=[ "Management", "Return"])
+""", choices=["Management", "Return"])
 
     if fa == "Management":
         msgbox(msg="""
@@ -134,7 +134,7 @@ High Ranks\n
 
 Principal Director - “Aenean” (Jasmine)\n
 
-Specialised Investigator - “Saxum” (Rock)\n
+Specialized Investigator - “Saxum” (Rock)\n
 """)
         fa_main_page()
 
@@ -156,7 +156,7 @@ def societas_spiritus():
         msgbox(msg="Oops! That is incorrect!")
         main()
 
-# finish below
+
 def ss_main_page():
     """Learn or return."""
     ss = buttonbox(msg="""
@@ -165,15 +165,136 @@ What would you like to learn about today?
 """, choices=["Mutations", "Management", "Return"])
 
     if ss == "Mutations":
-        msgbox(msg="placeholder")
-        ss_main_page()
+        experimentation()
 
     elif ss == "Management":
-        msgbox(msg="Management")
+        msgbox(msg="""
+Management\n
+
+Leader - “Aquae” (Water)\n
+
+Research Director - “Ignis” (Fire)\n
+
+High Ranks\n
+
+Data Coordinator - “Lunae” (Moon)\n
+
+Regulatory Coordinator - “Sol” (Sun)\n
+""")
         ss_main_page()
 
     elif ss == "Return":
         main()
+
+    else:
+        sys.exit()
+
+
+def experimentation():
+    """Learn or return."""
+    mutations = buttonbox(msg="""
+Societas Spiritus human mutations.
+""", choices=["Fish", "Cat", "Wolf", "Bird", "Dog", "Return"])
+
+    if mutations == "Fish":
+        p1 = msgbox(msg="""
+Fish mutations are purely made for the male gaze and aesthetic.\n
+Fish normally appear visually with large fins or tail.\n
+Small additions which aren't as visual as the fins or tail are
+    Gills, webbed hands and feet, scales.\n
+Fish mutations can be all colours of the the rainbow,
+    due to the range of fish genes used in experimentation.\n
+""", ok_button="Continue")
+
+        if p1 is None:
+            sys.exit()
+
+        p2 = msgbox(msg="""
+Fish mutations length, strength, and other qualities will vary greatly,
+    depending on the person's genes.\n
+Fish mutations can go wrong and affect a person insides instead of outsides.\n
+""", ok_button="Continue")
+
+        if p2 is None:
+            sys.exit()
+
+        experimentation()
+
+    elif mutations == "Cat":
+        p1 = msgbox(msg="""
+Cat mutations are basic, they are ears and tail,
+    with the slight chance of pupils and claws.\n
+Cat mutations can only be black, white, grey, orange, or brown,
+    as cat genes are limited to certain colours.\n
+Cat mutations length, strength, and other qualities will vary greatly,
+    depending on the person's genes.\n
+Cat mutations can go wrong and affect a persons insides instead of outsides.\n
+""", ok_button="Continue")
+
+        if p1 is None:
+            sys.exit()
+
+        experimentation()
+
+    elif mutations == "Dog":
+        p1 = msgbox(msg="""
+Dog mutations are basic, they are ears and tail,
+    with the slight chance of pupils and claws.\n
+Dog mutations can only be black, white, grey, or brown,
+    as dog genes are limited to certain colours.\n
+Dog mutations length, strength, and other qualities will vary greatly,
+    depending on the person's genes.\n
+Dog mutations can go wrong and affect a persons insides instead of outsides.\n
+""", ok_button="Continue")
+
+        if p1 is None:
+            sys.exit()
+
+        experimentation()
+
+    elif mutations == "Wolf":
+        p1 = msgbox(msg="""
+Wolf mutations are basic, they are ears and tail,
+    with the slight chance of pupils and claws.\n
+Wolf mutations can only be black, white, grey, or brown,
+    as wolf genes are limited to certain colours.\n
+Wolf mutations length, strength, and other qualities will vary greatly,
+    depending on the person's genes.\n
+Wolf mutations can go wrong and affect a person insides instead of outsides.\n
+""", ok_button="Continue")
+
+        if p1 is None:
+            sys.exit()
+
+        experimentation()
+
+    elif mutations == "Bird":
+        p1 = msgbox(msg="""
+Bird mutations are made for flight..\n
+Bird mutation visually shows as wings, be that on the back,
+    legs, arms, chest, head, ears, eyes, wrists, ankles or whatever.\n
+Small additions which aren't as visual as the wings are
+    Feathers.\n
+Bird mutations can be all colours of the the rainbow,
+    due to the range of bird genes used in experimentation.\n
+""", ok_button="Continue")
+
+        if p1 is None:
+            sys.exit()
+
+        p2 = msgbox(msg="""
+Bird mutations length, strength, and other qualities will vary greatly,
+    depending on the person's genes.\n
+Bird mutations can go wrong and affect a person insides instead of outsides.\n
+""", ok_button="Continue")
+
+        if p2 is None:
+            sys.exit()
+
+        experimentation()
+
+    elif mutations == "Return":
+        ss_main_page()
 
     else:
         sys.exit()
@@ -189,20 +310,28 @@ def circulus_aeternitatis():
         msgbox(msg="Oops! That is incorrect!")
         main()
 
-# finish below
+
 def ca_main_page():
     """Learn or return."""
     ca = buttonbox(msg="""
 Welcome Circulus Aeternitatis personnel,\n
 What would you like to learn about today?
-""", choices=["placeholder", "Management", "Return"])
+""", choices=["Management", "Return"])
 
-    if ca == "placeholder":
-        msgbox(msg="placeholder")
-        ca_main_page()
+    if ca == "Management":
+        msgbox(msg="""
+Management\n
 
-    elif ca == "Management":
-        msgbox(msg="Management")
+Boss - “Corvus” (Raven)\n
+
+Under boss - “Cornix” (Crow)\n
+
+High Ranks\n
+
+Director Capo - “Succubus”\n
+
+Specialized Capo - “Umbra” (Shadow)\n
+""")
         ca_main_page()
 
     elif ca == "Return":
@@ -252,8 +381,6 @@ Here using the mutations mentioned in S.S's lore,
 you get to make your own!\n
 Well own referring to how it looks.\n
 Not a new mutation!\n
-Be warned!
-Once you enter you can't back out!
 """, ok_button="Continue")
 
     main_four()
@@ -273,53 +400,50 @@ def main_four():
 
     race = choicebox(msg="Pick a race: ", choices=races)
 
-    if race == "Human" or "Fish" or "Bird" or "Cat" or "Dog" or "Wolf":
+    if race in races:
         age = choicebox(msg="Pick a age: ", choices=ages)
 
-        if age == "13" or "14" or "15" or "16" or "17" or "18":
+        if age in ages:
             height = choicebox(msg="Pick a height: ", choices=heights)
 
             if height == "4'11 and below":
-                msgbox(msg="Sorry bud, too similar to a child!")
-                main()
+                msgbox(msg="I'm watching you...")
+                gender = choicebox(msg="Pick a gender: ", choices=sex)
+
+                if gender in sex:
+                    hair_stuff()
+
+                else:
+                    main()
 
             elif height == "5'0 - 5'11":
                 msgbox(msg="Average height!")
                 gender = choicebox(msg="Pick a gender: ", choices=sex)
 
-                if gender == "Female":
+                if gender in sex:
                     hair_stuff()
 
-                elif gender == "Male":
-                    hair_stuff()
+                else:
+                    main()
 
-            elif height == "6'0 - 6'11" or "7'0 and above":
+            elif height in ["6'0 - 6'11", "7'0 and above"]:
                 msgbox(msg="Interesting height you got there!")
                 gender = choicebox(msg="Pick a gender: ", choices=sex)
 
-                if gender == "Female" or "Male":
+                if gender in sex:
                     hair_stuff()
 
-        elif age == "19" or "20" or "21+":
-            height = choicebox(msg="Pick a height: ", choices=heights)
+                else:
+                    main()
 
-            if height == "4'11 and below":
-                msgbox(msg="Sorry bud, too similar to a child!")
+            else:
                 main()
 
-            elif height == "5'0 - 5'11":
-                msgbox(msg="Average height!")
-                gender = choicebox(msg="Pick a gender: ", choices=sex)
+        else:
+            main()
 
-                if gender == "Female" or "Male":
-                    hair_stuff()
-
-            elif height == "6'0 - 6'11" or "7'0 and above":
-                msgbox(msg="Interesting height you got there!")
-                gender = choicebox(msg="Pick a gender: ", choices=sex)
-
-                if gender == "Female" or "Male":
-                    hair_stuff()
+    else:
+        main()
 
 
 def hair_stuff():
@@ -335,20 +459,35 @@ def hair_stuff():
     if gender == "Female":
         f_length = choicebox(msg="Pick a hair length: ", choices=f_hair)
 
-        if f_length == "Short" or "Medium" or "Long":
+        if f_length in f_hair:
             hair_colour = choicebox(msg="Pick a colour: ", choices=h_colour)
 
-            if hair_colour == "Blonde" or "Black" or "Brown":
+            if hair_colour in h_colour:
                 others()
+
+            else:
+                main()
+
+        else:
+            main()
 
     elif gender == "Male":
         m_length = choicebox(msg="Pick a hair length: ", choices=m_hair)
 
-        if m_length == "Bald" or "Buzz" or "Ear length" or "Neck length":
+        if m_length in m_hair:
             hair_colour = choicebox(msg="Pick a colour: ", choices=h_colour)
 
-            if hair_colour == "Blonde" or "Black" or "Brown":
+            if hair_colour in h_colour:
                 others()
+
+            else:
+                main()
+
+        else:
+            main()
+
+    else:
+        main()
 
 
 def others():
@@ -359,59 +498,66 @@ def others():
     s_colour = ["Black", "Brown", "White"]
     e_colour = ["Blue", "Green", "Brown", "Gray", "Gold", "Red", "Purple"]
 
-    if hair_colour == "Blonde" or "Black" or "Brown":
+    if hair_colour in ["Blonde", "Black", "Brown"]:
         skin_colour = choicebox(msg="Pick a skin: ", choices=s_colour)
 
-        if skin_colour == "Black" or "Brown" or "White":
+        if skin_colour in s_colour:
             eye_colour = choicebox(msg="Pick a eye: ", choices=e_colour)
 
-            if eye_colour == "Blue" or "Green" or "Brown" or "Gray":
+            if eye_colour in e_colour:
                 aftermath()
 
-            elif eye_colour == "Gold" or "Red" or "Purple":
-                aftermath()
+            else:
+                main()
+
+        else:
+            main()
+
+    else:
+        main()
 
 
 def aftermath():
     """Finial."""
     score = 0
     years = ["25", "30", "35", "100", "150", "200", "250", "300", "350", "400"]
+    q_answer = ["30", "100", "400"]
     msgbox(msg="Congratulations! You did it.")
     msgbox("""
 Your final outcome is-\n
 OH WAIT LOOK A POP QUIZ!
 """)
-    if score == 0:
+    while score == 0:
         q = multchoicebox(msg="""
 What is the current run times for each group?
 """, choices=years)
 
-        if q == "30" and "100" and "400":
+        if q == q_answer:
             score = score + 5
 
-        elif q is None:
-            sys.exit()
-
         else:
-            score = 0
+            aftermath()
 
-    msgbox(msg="Well done! (totally wasn't added because required)")
+    msgbox(msg="Well done!")
     if gender == "Male":
         msgbox(f"""
 Anyways. You have picked:
 A {gender} {race} with {skin_colour} skin and {eye_colour} eyes.
 {age} years old, standing at {height} tall.
-{hair_colour} {m_length}.
+{m_length} (length) {hair_colour} hair.
 """)
+        main()
+
     elif gender == "Female":
         msgbox(f"""
 Anyways. You have picked:
 A {gender} {race} with {skin_colour} skin and {eye_colour} eyes.
 {age} years old, standing at {height} tall.
-{hair_colour} {f_length} hair.
+{f_length} (length) {hair_colour} hair.
 """)
         main()
 
 
+cc_main_page()
 user_selector()
 main()
