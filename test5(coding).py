@@ -103,6 +103,44 @@ C.A has been in business in for 30 years.
     main()
 
 
+def over_view_two():
+    """Explains the basics of the book."""
+    p1 = msgbox(msg="""
+Societas Spiritus focuses mainly on the group, Societas Spiritus.\n
+S.S's main goal is to create human animal mutations.\n
+S.S has been in running for about 200~+ years, close to 400~ years.\n
+S.S ignores ethical and safety concerns,
+leading to many deaths of staff due to trying to stop their crimes.\n
+""", ok_button="Continue")
+
+    if p1 is None:
+        sys.exit()
+
+    p2 = msgbox(msg="""
+Over the years, two personnel managed to successfully defect,
+starting a detectives firm called, Foedus Aquilarum.\n
+F.A has been running for about 100~ years.\n
+F.A has had many encounters with S.S,
+many leading in deaths on both sides.\n
+F.A attempts to destroy S.S's sites and facilities.
+""", ok_button="Continue")
+
+    if p2 is None:
+        sys.exit()
+
+    p3 = msgbox(msg="""
+One of the defected personnel corrupted and left F.A,
+starting an underground organisation called, Circulus Aeternitatis.\n
+C.A serves to bring a multitude of hostile organizations
+together to locate and capture escaped or injured S.S experiments.\n
+To either recruit or throw into very top secret biddings.\n
+C.A has been in business in for 30 years.
+""", ok_button="Continue")
+
+    if p3 is None:
+        sys.exit()
+
+
 def foedus_aquilarum():
     """Gathers password before proceeding to page or back to main."""
     fa_password = passwordbox(msg="Please enter personnel password: ")
@@ -536,6 +574,7 @@ What is the current run times for each group?
             score = score + 5
 
         else:
+            over_view_two()
             aftermath()
 
     msgbox(msg="Well done!")
