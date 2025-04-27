@@ -597,6 +597,5 @@ A {gender} {race} with {skin_colour} skin and {eye_colour} eyes.
         main()
 
 
-cc_main_page()
 user_selector()
 main()
